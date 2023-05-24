@@ -104,6 +104,9 @@
 
   <xsl:template match="p[not(ancestor::li)]">
     <w:p>
+      <w:pPr>
+        <w:spacing w:after="120" w:before="120" />
+      </w:pPr>
       <xsl:call-template name="text-alignment" />
       <xsl:apply-templates />
     </w:p>
