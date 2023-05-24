@@ -303,6 +303,15 @@
     <xsl:apply-templates />
   </xsl:template>
 
+  <xsl:template match="p[contains(concat(' ', @class, ' '), ' -page-break ')]">
+    <w:p>
+      <w:r>
+        <w:br w:type="page" />
+      </w:r>
+    </w:p>
+    <xsl:apply-templates />
+  </xsl:template>
+
   <xsl:template match="details" />
 
   <xsl:template match="text()">
