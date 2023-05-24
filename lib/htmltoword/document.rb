@@ -61,8 +61,12 @@ module Htmltoword
             out.put_next_entry entry.name
             if @replaceable_files[entry.name] && entry.name == Document.doc_xml_file
               source = entry.get_input_stream.read
-              # Change only the body of document. TODO: Improve this...
-              source = source.sub(/(<w:body>)((.|\n)*?)(<w:sectPr)/, "\\1#{@replaceable_files[entry.name]}\\4")
+
+              # improved replacement, prevents document content from being treated as a match, e.g. '\2'
+              if source =~ /(.*?<w:body>).*?(<w:sectPr.*)/m
+                source = [$1, @replaceable_files[entry.name], $2].join
+              end
+
               out.write(source)
             elsif @replaceable_files[entry.name]
               out.write(@replaceable_files[entry.name])
