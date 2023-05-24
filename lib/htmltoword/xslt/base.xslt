@@ -128,6 +128,7 @@
           <w:p>
             <w:pPr>
               <w:pStyle w:val="ListParagraph"></w:pStyle>
+              <w:spacing w:before="0" w:after="0"/>
               <w:numPr>
                 <w:ilvl w:val="0"/>
                 <w:numId w:val="0"/>
@@ -148,6 +149,7 @@
               <w:p>
                 <w:pPr>
                   <w:pStyle w:val="ListParagraph"></w:pStyle>
+                  <w:spacing w:before="0" w:after="0"/>
                   <w:numPr>
                     <w:ilvl w:val="0"/>
                     <w:numId w:val="0"/>
@@ -161,6 +163,7 @@
               <w:p>
                 <w:pPr>
                   <w:pStyle w:val="ListParagraph"></w:pStyle>
+                  <w:spacing w:before="0" w:after="0"/>
                   <w:numPr>
                     <w:ilvl w:val="{$ilvl}"/>
                     <w:numId w:val="{$global_level}"/>
