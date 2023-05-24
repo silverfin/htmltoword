@@ -83,34 +83,33 @@
     <xsl:param name="current" />
     <xsl:param name="class" />
     <xsl:param name="style" />
-    <xsl:if test="count($current/*|$current/text()) = 0">
-      <w:p/>
-    </xsl:if>
-    <xsl:for-each select="$current/*|$current/text()">
-      <xsl:choose>
-        <xsl:when test="name(.) = 'table'">
-          <xsl:apply-templates select="." />
-          <w:p/>
-        </xsl:when>
-        <xsl:when test="contains('|p|h1|h2|h3|h4|h5|h6|ul|ol|', concat('|', name(.), '|'))">
-          <xsl:apply-templates select="." />
-        </xsl:when>
-        <xsl:when test="descendant::table|descendant::p|descendant::h1|descendant::h2|descendant::h3|descendant::h4|descendant::h5|descendant::h6|descendant::li">
-          <xsl:call-template name="block">
-            <xsl:with-param name="current" select="."/>
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-          <w:p>
-            <xsl:call-template name="text-alignment">
-              <xsl:with-param name="class" select="$class" />
-              <xsl:with-param name="style" select="$style" />
-            </xsl:call-template>
+    <w:p>
+      <xsl:for-each select="$current/*|$current/text()">
+        <xsl:choose>
+          <xsl:when test="name(.) = 'table'">
             <xsl:apply-templates select="." />
-          </w:p>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each>
+            <w:p/>
+          </xsl:when>
+          <xsl:when test="contains('|div|p|h1|h2|h3|h4|h5|h6|ul|ol|br|', concat('|', name(.), '|'))">
+            <xsl:apply-templates select="." />
+          </xsl:when>
+          <xsl:when test="descendant::table|descendant::p|descendant::h1|descendant::h2|descendant::h3|descendant::h4|descendant::h5|descendant::h6|descendant::li">
+            <xsl:call-template name="block">
+              <xsl:with-param name="current" select="."/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <w:p>
+              <xsl:call-template name="text-alignment">
+                <xsl:with-param name="class" select="$class" />
+                <xsl:with-param name="style" select="$style" />
+              </xsl:call-template>
+              <xsl:apply-templates select="." />
+            </w:p>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+    </w:p>
   </xsl:template>
 
   <xsl:template name="tableborders">
