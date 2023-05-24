@@ -144,11 +144,17 @@
       <w:pPr>
         <w:ind w:left="{720 * ($ilvl + 1)}" w:hanging="360"/>
       </w:pPr>
+      <!--
+      - Solve corrupted items bullet
+      - See https://github.com/karnov/htmltoword/issues/73
+
       <xsl:if test="contains($style, 'bullet')">
         <w:rPr>
           <w:rFonts w:ascii="Symbol" w:hAnsi="Symbol" w:hint="default"/>
         </w:rPr>
       </xsl:if>
+
+     -->
     </w:lvl>
   </xsl:template>
 
