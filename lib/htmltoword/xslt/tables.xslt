@@ -91,6 +91,10 @@
             <w:p/>
           </xsl:when>
           <xsl:when test="contains('|div|p|h1|h2|h3|h4|h5|h6|ul|ol|br|', concat('|', name(.), '|'))">
+            <xsl:call-template name="text-alignment">
+              <xsl:with-param name="class" select="$class" />
+              <xsl:with-param name="style" select="$style" />
+            </xsl:call-template>
             <xsl:apply-templates select="." />
           </xsl:when>
           <xsl:when test="descendant::table|descendant::p|descendant::h1|descendant::h2|descendant::h3|descendant::h4|descendant::h5|descendant::h6|descendant::li">
